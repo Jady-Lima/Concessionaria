@@ -4,9 +4,16 @@
 
 #include "sistema.h"
 
+using namespace std;
+
 //CONSTRUTOR DA CLASSE
-Sistema::Sistema(string arg)
+Sistema::Sistema()
 {
+    //SOLICITA O COMANDO DO USER
+    cout << "Comando: " << endl;
+    string comando;
+    cin >> comando;
+
     //quebra o argumento recebido e descobre qual função chamar(criar, remover, add, buscar)
 }
 
