@@ -3,19 +3,33 @@
 #define SISTEMA_H
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include "concessionaria.h"
 
 using namespace std;
 
 class Sistema
 {
     private:
-        /* data */
+        vector<Concessionaria> concessionarias;
+        
     public:
         //CONSTRUTOR DA CLASSE
-        Sistema(string arg);
+        Sistema();
 
         //CRIA UMA CONCESSIONARIA
         string create_concessionaria (const string nome, string CNPJ, int estoque);
+
+        //ADICIONA UM NOVO VEICULO A CONCESSIONARIA
+
+
+        //REMOVE UM VEICULO DA CONCESSIONARIA
+
+
+        //BUSCA UM VEICULO DENTRO DO VETOR CONCESSIONARIA
+
+
 
         //ENCERRA O SISTEMA
         string quit();
