@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
-#include <string.h>
+//#include <string.h>
+#include <string>
 #include <algorithm>
 
 #include "../include/sistema.h"
@@ -15,11 +16,14 @@ Sistema::Sistema()
 
     //QUEBRA O COMANDO
     palavras = quebra_string(comando, " ");
+    cout << "O nome e : " << palavras[1] << endl;
 
     //COMPARA O QUE FAZER
     if (palavras[0] == "create-concessionaria")
     {
-        cout << "O comando digitado foi de criar " << palavras[0] << endl; 
+        //cout << "O comando digitado foi de criar " << palavras[0] << endl;
+        cout << "nome: " << palavras[1] << " CNPJ: " << palavras[2] << " estoque: " << palavras[3] << endl;
+        create_concessionaria(palavras[1], palavras[2], palavras[3]); 
     }
 
     else if (palavras[0] == "remove-vehicle")
@@ -75,10 +79,11 @@ Sistema::Sistema()
     
 }
 
-string Sistema::create_concessionaria (const string nome, string CNPJ, int estoque)
+void Sistema::create_concessionaria (string nome, string CNPJ, string estoque)
 {
     //cria a concessionaria
-    return "Implementar o create concessionaria";
+    cout << "nome: " << nome << " CNPJ: " << CNPJ << " estoque: " << estoque << endl;
+    //return "Implementar o create concessionaria";
 }
 
 //ENCERRA O PROGRAMA
