@@ -1,5 +1,5 @@
 concessionaria: programa.o sistema.o
-	g++ -Wall -Iinclude -o ./bin/concessionaria programa.o sistema.o
+	g++ -Wall -Iinclude -o concessionaria programa.o sistema.o
 
 programa.o: src/programa.cpp include/sistema.h
 	g++ -c src/programa.cpp

@@ -1,9 +1,3 @@
-#include <iostream>
-#include <sstream>
-//#include <string.h>
-#include <string>
-#include <algorithm>
-
 #include "../include/sistema.h"
 
 //CONSTRUTOR DA CLASSE
@@ -11,18 +5,15 @@ Sistema::Sistema()
 {
     //SOLICITA O COMANDO DO USER
     cout << "Comando: " << endl;
-    string comando;
-    cin >> comando;
+    char comando[80];
+    cin.getline(comando, 80);
 
     //QUEBRA O COMANDO
     palavras = quebra_string(comando, " ");
-    cout << "O nome e : " << palavras[1] << endl;
 
     //COMPARA O QUE FAZER
     if (palavras[0] == "create-concessionaria")
     {
-        //cout << "O comando digitado foi de criar " << palavras[0] << endl;
-        cout << "nome: " << palavras[1] << " CNPJ: " << palavras[2] << " estoque: " << palavras[3] << endl;
         create_concessionaria(palavras[1], palavras[2], palavras[3]); 
     }
 
@@ -79,10 +70,10 @@ Sistema::Sistema()
     
 }
 
-void Sistema::create_concessionaria (string nome, string CNPJ, string estoque)
+void Sistema::create_concessionaria (string name, string cnpj, string est)
 {
     //cria a concessionaria
-    cout << "nome: " << nome << " CNPJ: " << CNPJ << " estoque: " << estoque << endl;
+    cout << "nome: " << name << " CNPJ: " << cnpj << " estoque: " << est << endl;
     //return "Implementar o create concessionaria";
 }
 
@@ -95,25 +86,28 @@ string quit()
 //QUEBRA A STRING ADD CADA PARTE EM UMA POSIÇÃO DO VETOR
 vector<string> Sistema::quebra_string(string str, const char* op)
 {
-    vector<string> palavra;
-    
-    string resto = str, bloco;
-    size_t posicao = resto.find_first_of(op);
+    vector<string> p;
 
-    while (posicao != string::npos)
+    //variaveis que serão usadas no codigo
+    string resto = str, bloco;
+    size_t operator_position = resto.find_first_of(op);
+
+    //loop que quebra a string
+    while (operator_position != string::npos)
     {
-        bloco = resto.substr(0, posicao);
-        resto = resto.substr(posicao + 1);
-        posicao = resto.find_first_of(op);
-        palavra.push_back(bloco);
+        bloco = resto.substr(0, operator_position);
+        resto = resto.substr(operator_position + 1);
+        operator_position = resto.find_first_of(op);
+        p.push_back(bloco);
     }
-    
+
+    //if que que adiciona o resto ao vector se for maior que zero
     if (resto.length() > 0)
     {
-        palavra.push_back(resto);
+        p.push_back(resto);
     }
 
-    return palavra;
+    return p;  
 }
 
 //DESTRUTOR DA CLASSE SISTEMA

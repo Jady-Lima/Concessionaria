@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
+#include <algorithm>
 //#include "concessionaria.h"
 
 using namespace std;
