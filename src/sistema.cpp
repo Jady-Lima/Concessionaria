@@ -75,6 +75,8 @@ void Sistema::create_concessionaria (string name, string cnpj, string est)
     //cria a concessionaria
     cout << "nome: " << name << " CNPJ: " << cnpj << " estoque: " << est << endl;
     //return "Implementar o create concessionaria";
+    Concessionaria n_cons(name, cnpj, est);
+    concessionarias.push_back(n_cons);
 }
 
 //ENCERRA O PROGRAMA

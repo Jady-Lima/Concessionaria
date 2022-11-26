@@ -1,10 +1,11 @@
-#include "concessionaria.h"
+#include "../include/concessionaria.h"
 
-Concessionaria::Concessionaria(int e, string n, string c)
+Concessionaria::Concessionaria(string n, string c, string e)
 {
     estoque = e;
     nome = n;
     CNPJ = c;
+    cout << "Consecionaria ok " << endl;
 }
 
 Concessionaria::~Concessionaria()

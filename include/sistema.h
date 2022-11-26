@@ -7,14 +7,14 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
-//#include "concessionaria.h"
+#include "concessionaria.h"
 
 using namespace std;
 
 class Sistema
 {
     private:
-        //vector<Concessionaria> concessionarias;
+        vector<Concessionaria> concessionarias;
         vector<string> palavras;
         
     public:

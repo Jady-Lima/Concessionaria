@@ -6,13 +6,13 @@ using namespace std;
 class Concessionaria
 {
     protected:
-        int estoque;
+        string estoque;
         string nome;
         string CNPJ;
     
     public:
         //CONSTRUTOR DA CLASSE
-        Concessionaria(int e, string n, string c);
+        Concessionaria(string n, string c, string e);
 
         //DESTRUTOR DA CLASSE
         ~Concessionaria();
