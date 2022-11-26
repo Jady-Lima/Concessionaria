@@ -20,7 +20,7 @@ class Sistema
         Sistema();
 
         //CRIA UMA CONCESSIONARIA
-        string create_concessionaria (const string nome, string CNPJ, int estoque);
+        void create_concessionaria (const string nome, string CNPJ, string estoque);
 
         //ADICIONA UM NOVO VEICULO A CONCESSIONARIA
 
