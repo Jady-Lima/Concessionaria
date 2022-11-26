@@ -1,9 +1,10 @@
 #include <iostream>
-#include "sistema.h"
+#include "../include/sistema.h"
 
 using namespace std;
 
 int main()
 {
+    //Chama o sistema
     Sistema sistema;
 }

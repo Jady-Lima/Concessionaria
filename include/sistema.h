@@ -5,14 +5,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "concessionaria.h"
+//#include "concessionaria.h"
 
 using namespace std;
 
 class Sistema
 {
     private:
-        vector<Concessionaria> concessionarias;
+        //vector<Concessionaria> concessionarias;
+        vector<string> palavras;
         
     public:
         //CONSTRUTOR DA CLASSE
@@ -30,6 +31,8 @@ class Sistema
         //BUSCA UM VEICULO DENTRO DO VETOR CONCESSIONARIA
 
 
+        //QUEBRA A STRING PARA DESCOBRIR QUAL O COMANDO
+        vector<string> quebra_string(string str, const char* op);
 
         //ENCERRA O SISTEMA
         string quit();
