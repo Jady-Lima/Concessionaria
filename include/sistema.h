@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <string.h>
 #include <algorithm>
 #include "concessionaria.h"
 
@@ -22,7 +23,7 @@ class Sistema
         Sistema();
 
         //CRIA UMA CONCESSIONARIA
-        void create_concessionaria (const string nome, string CNPJ, string estoque);
+        Concessionaria create_concessionaria (const string nome, string CNPJ, string estoque);
 
         //ADICIONA UM NOVO VEICULO A CONCESSIONARIA
 
@@ -37,7 +38,7 @@ class Sistema
         vector<string> quebra_string(string str, const char* op);
 
         //ENCERRA O SISTEMA
-        string quit();
+        void quit();
 
         //DESTRUTOR DA CLASSE
         ~Sistema();
