@@ -3,86 +3,93 @@
 //CONSTRUTOR DA CLASSE
 Sistema::Sistema()
 {
-    //SOLICITA O COMANDO DO USER
-    cout << "Comando: " << endl;
     char comando[80];
-    cin.getline(comando, 80);
-
-    //QUEBRA O COMANDO
-    palavras = quebra_string(comando, " ");
-
-    //COMPARA O QUE FAZER
-    if (palavras[0] == "create-concessionaria")
+    while (1)
     {
-        create_concessionaria(palavras[1], palavras[2], palavras[3]); 
-    }
+        //SOLICITA O COMANDO DO USER
+        cout << "Comando: " << endl;
+        cin.getline(comando, 80);
 
-    else if (palavras[0] == "remove-vehicle")
-    {
-        cout << "O comando digitado foi de remover " << palavras[0] << endl; 
-    }
+        //QUEBRA O COMANDO
+        palavras = quebra_string(comando, " ");
 
-    else if (palavras[0] == "search-vehicle")
-    {
-        cout << "O comando digitado foi busca" << palavras[0] << endl; 
-    }
-    
-    else
-    {
-        vector<string> add_p;
-        add_p = quebra_string(palavras[0], "-");
-
-        if (add_p[0] == "add")  
+        //COMPARA O QUE FAZER
+        if (palavras[0] == "quit")
         {
-            if (add_p[1] == "car")
+            quit();
+        }
+        
+        else if (palavras[0] == "create-concessionaria")
+        {
+            concessionarias.push_back(create_concessionaria(palavras[1], palavras[2], palavras[3])); 
+        }
+
+        else if (palavras[0] == "remove-vehicle")
+        {
+            cout << "O comando digitado foi de remover " << palavras[0] << endl; 
+        }
+
+        else if (palavras[0] == "search-vehicle")
+        {
+            cout << "O comando digitado foi busca" << palavras[0] << endl; 
+        }
+        
+        else
+        {
+            vector<string> add_p;
+            add_p = quebra_string(palavras[0], "-");
+
+            if (add_p[0] == "add")  
             {
-                cout << "O comando digitado foi criar carro " << palavras[0] << endl; 
-                cout << "Carro criado " << endl; 
+                if (add_p[1] == "car")
+                {
+                    cout << "O comando digitado foi criar carro " << palavras[0] << endl; 
+                    cout << "Carro criado " << endl; 
+                }
+
+                else if (add_p[1] == "truck")
+                {
+                    cout << "O comando digitado foi criar caminhao " << palavras[0] << endl; 
+                    cout << "Caminhão criado " << endl; 
+                }
+
+                else if (add_p[1] == "moto")
+                {
+                    cout << "O comando digitado foi criar moto " << palavras[0] << endl; 
+                    cout << "Moto criada " << endl; 
+                }
+                
+                else
+                {
+                    cerr << "No match found, add";
+                    exit(1);
+                }
+                
             }
 
-            else if (add_p[1] == "truck")
-            {
-                cout << "O comando digitado foi criar caminhao " << palavras[0] << endl; 
-                cout << "Caminhão criado " << endl; 
-            }
-
-            else if (add_p[1] == "moto")
-            {
-                cout << "O comando digitado foi criar moto " << palavras[0] << endl; 
-                cout << "Moto criada " << endl; 
-            }
-            
             else
             {
-                cerr << "No match found, add";
+                cerr << "No match found, sistema";
                 exit(1);
             }
             
         }
-
-        else
-        {
-            cerr << "No match found, sistema";
-            exit(1);
-        }
-        
     }
-    
 }
 
-void Sistema::create_concessionaria (string name, string cnpj, string est)
+Concessionaria Sistema::create_concessionaria (string name, string cnpj, string est)
 {
     //cria a concessionaria
     cout << "nome: " << name << " CNPJ: " << cnpj << " estoque: " << est << endl;
-    //return "Implementar o create concessionaria";
     Concessionaria n_cons(name, cnpj, est);
-    concessionarias.push_back(n_cons);
+    return n_cons;
 }
 
 //ENCERRA O PROGRAMA
-string quit()
+void Sistema::quit()
 {
-    return "Saindo...";
+    cout << "Saindo...";
+    exit(1);
 }
 
 //QUEBRA A STRING ADD CADA PARTE EM UMA POSIÇÃO DO VETOR
