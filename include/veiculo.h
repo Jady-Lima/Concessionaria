@@ -1,10 +1,9 @@
 #include <iostream>
-
-#include "concessionaria.h"
+#include <vector>
 
 using namespace std;
 
-class Veiculo : public Concessionaria
+class Veiculo
 {
     protected:
         string chassi;
@@ -14,7 +13,7 @@ class Veiculo : public Concessionaria
 
     public:
         //CONSTRUTOR
-        Veiculo(string ch, string m, double p, int a) : Concessionaria(estoque, nome, CNPJ){}
+        Veiculo(string ch, string m, double p, int a);
 
         //DESTRUTOR
         ~Veiculo();
