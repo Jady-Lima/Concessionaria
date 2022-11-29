@@ -14,12 +14,7 @@ Sistema::Sistema()
         palavras = quebra_string(comando, " ");
 
         //COMPARA O QUE FAZER
-        if (palavras[0] == "quit")
-        {
-            quit();
-        }
-        
-        else if (palavras[0] == "create-concessionaria")
+        if (palavras[0] == "create-concessionaria")
         {
             concessionarias.push_back(create_concessionaria(palavras[1], palavras[2], palavras[3])); 
         }
