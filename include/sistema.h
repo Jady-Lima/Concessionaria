@@ -1,47 +1,40 @@
-//SISTEMA QUE CRIA AS CONCESSIONARIAS
 #ifndef SISTEMA_H
 #define SISTEMA_H
-
-#include <iostream>
 #include <vector>
 #include <string>
-#include <sstream>
-#include <string.h>
-#include <algorithm>
+#include <iostream>
 #include "concessionaria.h"
+#include <sstream>
+#include <algorithm>
 
 using namespace std;
 
-class Sistema
-{
-    private:
-        vector<Concessionaria> concessionarias;
-        vector<string> palavras;
-        
-    public:
-        //CONSTRUTOR DA CLASSE
-        Sistema();
+class Sistema {
+  private:
+		vector<string> dados;
+		vector<Concessionaria> concessionarias;
+		
+  public:
+		string quit();
 
-        //CRIA UMA CONCESSIONARIA
-        Concessionaria create_concessionaria (const string nome, string CNPJ, string estoque);
+		vector<Concessionaria> &getConcessionaria();
+		void setConcessionaria(Concessionaria concessionaria);
 
-        //ADICIONA UM NOVO VEICULO A CONCESSIONARIA
+		string create_concessionaria (const string nome);
 
+		string add_car (const string nome);	
+		string add_truck (const string nome);	
+		string add_moto (const string nome);
 
-        //REMOVE UM VEICULO DA CONCESSIONARIA
+		string search_vehicle(const string chassi);
+		string remove_vehicle(const string chassi);
+		string list_concessionaria(const string nome);
+		string raise_price(const string nome);
 
+		int search_concessionaria(const string nome);
+		vector<string> quebra_string(string str, const char* op);
 
-        //BUSCA UM VEICULO DENTRO DO VETOR CONCESSIONARIA
-
-
-        //QUEBRA A STRING PARA DESCOBRIR QUAL O COMANDO
-        vector<string> quebra_string(string str, const char* op);
-
-        //ENCERRA O SISTEMA
-        void quit();
-
-        //DESTRUTOR DA CLASSE
-        ~Sistema();
+		void print_concessionaria();
 };
 
 #endif

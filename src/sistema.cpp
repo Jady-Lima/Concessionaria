@@ -1,102 +1,42 @@
 #include "../include/sistema.h"
 
-//CONSTRUTOR DA CLASSE
-Sistema::Sistema()
+//CHAMA A FUNÇÃO QUE ENCERRA O PROGRAMA
+string Sistema::quit() 
 {
-    char comando[80];
-    while (1)
-    {
-        //SOLICITA O COMANDO DO USER
-        cout << "Comando: " << endl;
-        cin.getline(comando, 80);
-
-        //QUEBRA O COMANDO
-        palavras = quebra_string(comando, " ");
-
-        //COMPARA O QUE FAZER
-        if (palavras[0] == "create-concessionaria")
-        {
-            concessionarias.push_back(create_concessionaria(palavras[1], palavras[2], palavras[3])); 
-        }
-
-        else if (palavras[0] == "remove-vehicle")
-        {
-            cout << "O comando digitado foi de remover " << palavras[0] << endl; 
-        }
-
-        else if (palavras[0] == "search-vehicle")
-        {
-            cout << "O comando digitado foi busca" << palavras[0] << endl; 
-        }
-        
-        else
-        {
-            vector<string> add_p;
-            add_p = quebra_string(palavras[0], "-");
-
-            if (add_p[0] == "add")  
-            {
-                if (add_p[1] == "car")
-                {
-                    cout << "O comando digitado foi criar carro " << palavras[0] << endl; 
-                    cout << "Carro criado " << endl; 
-                }
-
-                else if (add_p[1] == "truck")
-                {
-                    cout << "O comando digitado foi criar caminhao " << palavras[0] << endl; 
-                    cout << "Caminhão criado " << endl; 
-                }
-
-                else if (add_p[1] == "moto")
-                {
-                    cout << "O comando digitado foi criar moto " << palavras[0] << endl; 
-                    cout << "Moto criada " << endl; 
-                }
-                
-                else
-                {
-                    cerr << "No match found, add";
-                    exit(1);
-                }
-                
-            }
-
-            else
-            {
-                cerr << "No match found, sistema";
-                exit(1);
-            }
-            
-        }
-    }
+    return "Saindo...";
 }
 
-Concessionaria Sistema::create_concessionaria (string name, string cnpj, string est)
+//CHAMA A FUNÇÃO QUE CRIA A CONCESSIONARIA
+string Sistema::create_concessionaria (const string nome) 
 {
-    //cria a concessionaria
-    cout << "nome: " << name << " CNPJ: " << cnpj << " estoque: " << est << endl;
-    Concessionaria n_cons(name, cnpj, est);
-    return n_cons;
+    dados = quebra_string(nome, " ");
+
+    Concessionaria n_con(dados[0], dados[1], stoi(dados[2]));
+    setConcessionaria(n_con);
+    
+    return "create_concessionaria";
 }
 
-//ENCERRA O PROGRAMA
-void Sistema::quit()
+//RETORNA O VETOR DE CONCESSIONARIAS
+vector<Concessionaria> &Sistema::getConcessionaria()
 {
-    cout << "Saindo...";
-    exit(1);
+    return concessionarias;
+}
+
+//ADICIONA AO VETOR DE CONCESSIONARIA
+void Sistema::setConcessionaria(Concessionaria concessionaria)
+{
+    concessionarias.push_back(concessionaria);
 }
 
 //QUEBRA A STRING ADD CADA PARTE EM UMA POSIÇÃO DO VETOR
-vector<string> Sistema::quebra_string(string str, const char* op)
+vector<string> Sistema::quebra_string(string str, const char* op) 
 {
     vector<string> p;
 
-    //variaveis que serão usadas no codigo
     string resto = str, bloco;
     size_t operator_position = resto.find_first_of(op);
 
-    //loop que quebra a string
     while (operator_position != string::npos)
     {
         bloco = resto.substr(0, operator_position);
@@ -105,7 +45,6 @@ vector<string> Sistema::quebra_string(string str, const char* op)
         p.push_back(bloco);
     }
 
-    //if que que adiciona o resto ao vector se for maior que zero
     if (resto.length() > 0)
     {
         p.push_back(resto);
@@ -114,8 +53,216 @@ vector<string> Sistema::quebra_string(string str, const char* op)
     return p;  
 }
 
-//DESTRUTOR DA CLASSE SISTEMA
-Sistema::~Sistema()
+//IMPRIME O VETOR DE CONCESSIONARIAS
+void Sistema::print_concessionaria() 
 {
+    for (int i = 0; i < (int)concessionarias.size(); i++)
+    {
+      cout << "Concessionaria: " << concessionarias[i].getNome() << endl;
+      cout << "CNPJ: " << concessionarias[i].getCnpj() << endl;
+      cout << "Estoque: " << concessionarias[i].getEstoque() << endl << endl;
+    } 
+}
+
+//ADICIONA UM NOVO CARRO
+string Sistema::add_car(const string nome)
+{
+    dados = quebra_string(nome, " ");
+    int i = search_concessionaria(dados[0]);
+
+    if (i == -1)
+    {
+      return "Concessionaria nao encontrada\n";
+    }
     
+
+    if(getConcessionaria().at(i).search_vehicle(dados[3]))
+    {
+      cout << "ERRO - Veiculo " << dados[3] << " ja adicionado a concessionaria " << dados[0] << endl;
+      return " ";
+    }
+
+    if (concessionarias[i].getNome() == dados[0])
+    {      
+      Automoveis car(dados[5], dados[3], dados[1], stof(dados[2]), stoi(dados[4]));
+      concessionarias[i].setAutomoveis(car);
+      concessionarias[i].setEstoque(concessionarias[i].getEstoque() + 1);
+      return "add-car";
+    }
+    
+    return "ERRO add-car";
+
+}
+
+//ADICIONA UM NOVO CAMINHAO
+string Sistema::add_truck(const string nome)
+{
+    dados = quebra_string(nome, " ");
+    int i = search_concessionaria(dados[0]);
+
+    if (i == -1)
+    {
+      return "Concessionaria nao encontrada\n";
+    }
+
+    if(getConcessionaria().at(i).search_vehicle(dados[3]))
+    {
+      cout << "ERRO - Veiculo " << dados[3] << " ja adicionado a concessionaria " << dados[0] << endl;
+      return " ";
+    }
+
+    if (concessionarias[i].getNome() == dados[0])
+    {
+      Caminhao truck(dados[5], dados[3], dados[1], stof(dados[2]), stoi(dados[4]));
+      concessionarias[i].setCaminhao(truck);
+      concessionarias[i].setEstoque(concessionarias[i].getEstoque() + 1);
+      return "add-truck";
+    }
+      
+    return "ERRO add-truck";
+      
+}
+
+//ADICIONA UMA NOVA MOTO
+string Sistema::add_moto(const string nome)
+{
+    dados = quebra_string(nome, " ");
+    int i = search_concessionaria(dados[0]);
+
+    if (i == -1)
+    {
+      return "Concessionaria nao encontrada\n";
+    }
+
+    if(getConcessionaria().at(i).search_vehicle(dados[3]))
+    {
+      cout << "ERRO - Veiculo " << dados[3] << " ja adicionado a concessionaria " << dados[0] << endl;
+      return " ";
+    }
+
+    if (concessionarias[i].getNome() == dados[0])
+    {
+      Moto moto(dados[5], dados[3], dados[1], stof(dados[2]), stoi(dados[4]));
+      concessionarias[i].setMoto(moto);
+      concessionarias[i].setEstoque(concessionarias[i].getEstoque() + 1);
+      return "add-bike";
+    }
+
+    return "ERRO add-bike";
+}
+
+//PESQUISA O VEICULO
+string Sistema::search_vehicle(const string chassi)
+{
+    for (int i = 0; i < (int) getConcessionaria().size(); i++)
+    {
+      if(getConcessionaria().at(i).search_vehicle(chassi))
+      {
+        cout << "CONCESSIONARIA: " << getConcessionaria().at(i).getNome() << endl;
+        return " ";
+      }
+    }
+    return "Veiculo nao encontrado\n";
+}
+
+//REMOVE O VEICULO 
+string Sistema::remove_vehicle(const string chassi)
+{
+    for (int i = 0; i < (int) getConcessionaria().size(); i++)
+    {
+      if(getConcessionaria().at(i).search_vehicle(chassi))
+      {
+        getConcessionaria()[i].remove_vehicle(chassi);
+        getConcessionaria()[i].setEstoque(getConcessionaria()[i].getEstoque() - 1);
+        return "remove-vehicle\n";
+      }
+    }
+    return "Veiculo nao encontrado\n";
+}
+
+//PESQUISA A CONCESSIONARIA
+int Sistema::search_concessionaria(const string nome)
+{
+    for (int i = 0; i < (int)getConcessionaria().size(); i++)
+    {
+      if (getConcessionaria()[i].getNome() == nome)
+      {
+        return i;
+      }
+    }
+    return -1;
+}
+
+//LISTA FROTA DE CONCESSIONARIA
+string Sistema::list_concessionaria(const string nome)
+{
+    int i = search_concessionaria(nome);
+    
+    if (i == -1)
+    {
+      return "Concessionaria nao encontrada";
+    }
+
+    double valor_carro = 0, valor_moto = 0, valor_caminhao = 0, valor_total = 0;
+
+    for (int j = 0; j < (int)getConcessionaria()[i].getAutomoveis().size(); j++)
+    {
+      valor_carro += getConcessionaria()[i].getAutomoveis()[j].getPreco();
+    }
+
+    for (int j = 0; j < (int)getConcessionaria()[i].getCaminhao().size(); j++)
+    {
+      valor_caminhao += getConcessionaria()[i].getCaminhao()[j].getPreco();
+    }
+    
+    for (int j = 0; j < (int)getConcessionaria()[i].getMoto().size(); j++)
+    {
+      valor_moto += getConcessionaria()[i].getMoto()[j].getPreco();
+    }
+
+    valor_total = valor_caminhao + valor_carro + valor_moto;
+
+    cout << endl;
+    cout << "Concessionaria " << nome << endl;
+    cout << "Total de Automoveis: " << (int)getConcessionaria()[i].getAutomoveis().size() << "; Valor total: R$ " << valor_carro << endl;
+    cout << "Total de Motos: " << (int)getConcessionaria()[i].getMoto().size() << "; Valor total: R$ " << valor_moto << endl;
+    cout << "Total de Caminhoes: " << (int)getConcessionaria()[i].getCaminhao().size() << "; Valor total: R$ " << valor_caminhao << endl;
+    cout << "Valor total da frota: R$ " << valor_total << endl;
+    return " ";
+}
+
+//FUNCAO QUE ATUALIZA TODOS OS VALORES DE VEICULOS DA CONCESSIONARIA
+string Sistema::raise_price(const string nome)
+{
+    dados = quebra_string(nome, " ");
+    int i = search_concessionaria(dados[0]);
+
+    if (i == -1)
+    {
+      return "Concessionaria nao encontrada para atualizar";
+    }
+    
+    for (int j = 0; j < (int)getConcessionaria()[i].getAutomoveis().size(); j++)
+    {
+      double aumento = getConcessionaria()[i].getAutomoveis()[j].getPreco() * (stof(dados[1])/100);
+      getConcessionaria()[i].getAutomoveis()[j].setPreco(aumento + getConcessionaria()[i].getAutomoveis()[j].getPreco());
+      cout << "Aumento de " << dados[1] << "\% nos precos de automoveis da concessionaria " << dados[0] << " realizado" << endl;
+    }
+    
+    for (int j = 0; j < (int)getConcessionaria()[i].getCaminhao().size(); j++)
+    {
+      double aumento = (getConcessionaria()[i].getCaminhao()[j].getPreco() * (stof(dados[1])/100));
+      getConcessionaria()[i].getCaminhao()[j].setPreco(aumento + getConcessionaria()[i].getCaminhao()[j].getPreco());
+      cout << "Aumento de " << dados[1] << "\% nos precos de caminhoes da concessionaria " << dados[0] << " realizado" << endl;
+    }
+
+    for (int j = 0; j < (int)getConcessionaria()[i].getMoto().size(); j++)
+    {
+      double aumento = (getConcessionaria()[i].getMoto()[j].getPreco() * (stof(dados[1])/100));
+      getConcessionaria()[i].getMoto()[j].setPreco(aumento + getConcessionaria()[i].getMoto()[j].getPreco());
+      cout << "Aumento de " << dados[1] << "\% nos precos de motos da concessionaria " << dados[0] << " realizado" << endl;
+    }
+
+    return "raise-price \n";
+
 }

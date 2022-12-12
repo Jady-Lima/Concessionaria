@@ -1,0 +1,24 @@
+create-concessionaria IMD-SB 22.222.222/0002-22 0
+create-concessionaria IMD-SA 11.111.111/0001-11 0
+add-car IMD-SA toyota 100000 9BRBLWHEXG0107721 2001 gasolina
+add-bike IMD-SB honda 200000 8BRBLSIFMS0294820 2008 classica
+add-car IMD-SA renault 570000 7BRBODCNSW92639433 2018 eletrico
+create-concessionaria IMD-SC 33.333.333/0003-33 0
+add-car IMD-SD renault 570000 7BRBODCNSW92639433 2018 eletrico
+add-truck IMD-SA jipe 400000 3BRBJTWPCM2563458 2018 comum
+add-truck IMD-SA jipe 400000 3BRBJTWPCM2563458 2018 comum
+add-car IMD-SB hyundai 300000 6BRBOSNTSL0575623 2020 gasolina
+create-concessionaria IMD-SD 44.444.444/0004-44 0
+add-truck IMD-SB hyundai 60000 5BRBOSHHPTSMD2587300 2000 perigosa
+add-bike IMD-SD hyundai 20000 fififhingo 2015 esportiva
+add-bike IMD-SA honda 12000 4BRBPWWQCB2583045 2008 esportiva
+search-vehicle 6BRBOSNTSL0575623
+search-vehicle 8BRBKSHMSIP183690
+remove-vehicle 8BRBKSHMSIP183690
+search-vehicle 4BRBPWWQCB2583045
+remove-vehicle 6BRBOSNTSL0575623
+search-vehicle 6BRBOSNTSL0575623
+list-concessionaria IMD-SA
+raise-price IMD-SA 10
+list-concessionaria IMD-SA
+quit

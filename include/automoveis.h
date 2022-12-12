@@ -1,6 +1,8 @@
+#ifndef AUTOMOVEIS_H
+#define AUTOMOVEIS_H
 #include <iostream>
 
-#include "veiculo.h"
+#include "veiculos.h"
 
 using namespace std;
 
@@ -10,11 +12,12 @@ class Automoveis : public Veiculo
         string tipo_de_motor;
         
     public:
-        //CONSTRUTOR
-        Automoveis(string t_m) : Veiculo(chassi, marca, preco, ano_fabricacao){}
+        Automoveis(string t_m, string chassi, string marca, double preco, int ano_fabricacao);
 
-        //DESTRUTOR
-        ~Automoveis();
+        string getTipo_motor();
+        void setTipo_motor(string t);
+        
+        void print_carro();
 };
 
-
+#endif

@@ -1,6 +1,8 @@
+#ifndef MOTO_H
+#define MOTO_H
 #include <iostream>
 
-#include "veiculo.h"
+#include "veiculos.h"
 
 using namespace std;
 
@@ -10,11 +12,12 @@ class Moto : public Veiculo
         string modelo;
         
     public:
-        //CONSTRUTOR
-        Moto(string m) : Veiculo(chassi, marca, preco, ano_fabricacao){}
+        Moto(string model, string chassi, string marca, double preco, int ano_fabricacao);
 
-        //DESTRUTOR
-        ~Moto();
+        string getModelo();
+        void setModelo(string m);
+
+        void print_Moto();
 };
 
-
+#endif

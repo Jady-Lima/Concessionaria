@@ -1,6 +1,8 @@
+#ifndef CAMINHAO_H
+#define CAMINHAO_H
 #include <iostream>
 
-#include "veiculo.h"
+#include "veiculos.h"
 
 using namespace std;
 
@@ -10,11 +12,12 @@ class Caminhao : public Veiculo
         string tipo_de_carga;
         
     public:
-        //CONSTRUTOR
-        Caminhao(string t_C) : Veiculo(chassi, marca, preco, ano_fabricacao){}
+        Caminhao(string tipo_carga, string chassi, string marca, double preco, int ano_fabricacao);
 
-        //DESTRUTOR
-        ~Caminhao();
+        string getTipo_Carga();
+        void setTipo_Carga(string t);
+
+        void print_caminhao();
 };
 
-
+#endif
