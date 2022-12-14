@@ -7,8 +7,6 @@
   
 # Compilação  
 
-* a descrição de como compilar e rodar o programa, incluindo um roteiro de entradas e comandos que destaquem as funcionalidades 
-
 A execução é realizada seguindo os seguintes passos:
 - No terminal executar o comando "make" 
 - Ainda no terminal, após compilar o arquivo, executar "./bin/concessionaria" para iniciar o programa
@@ -48,11 +46,25 @@ A execução é realizada seguindo os seguintes passos:
   $ search-vehicle <chassi>
   $ search-vehicle 7BRBLQHEXG0208811
   ```
-- Também é possível listar a frota registrada em uma determinada concessionaria, basta saber o no qual a concessionaria está registrada, siga o exemplo:
+- É possível listar a frota registrada em uma determinada concessionaria, basta saber o no qual a concessionaria está registrada, siga o exemplo:
   ```
   $ list-concessionaria <nome-concessionaria>
   $ list-concessionaria IMD_SA
   ```
+- Os dados de uma concessionaria podem ser salvos em um arquivo .txt, basta digitar:
+  ```
+  $ save-concessionaria <nome-arquivo.txt>
+  $ save-concessionaria IMD_SA.txt
+  ```
+  Os dados serão salvos em um arquivo com o nome solicitado pelo usuario.
+
+- Também é possível apresentar na tela dados de um arquivo, salvo anteriormente, de uma concessionária, seguindo o exemplo abaixo:
+  ```
+  $ load-concessionaria <nome-arquivo.txt>
+  $ load-concessionaria IMD_SA.txt
+  ```
+  A função apenas apresenta na tela os dados salvo no arquivo, para inseri-lo no vetor é necessário usar os metodos de adição com os dados que serão apresentados na tela.
+
 - Para parar a execução do programa basta digitar a qualquer momento o comando:
   ```
   $ quit
@@ -70,6 +82,7 @@ Junto aos arquivos há um arquivo de entrada onde encontra-se algumas possiveis 
 - Práticas de bom uso de recursos computacionais, conseguir organizar o código sem repetir os mesmos comandos
 - Função de adicionar, tive dificuldade para receber os valores para inserir nos vetores dos veiculos
 - Função de atualizar os preços, apesar de compreender o que deveria ser feito, tive dificuldades na implementação pois o setPreco recebia o valor, mas o getPreco não atualizava
+- Recuperar os dados do arquivo e criar uma nova concessionaria com os dados
 
 # Autoavaliação
 
@@ -113,11 +126,11 @@ Junto aos arquivos há um arquivo de entrada onde encontra-se algumas possiveis 
   - 10: implementado e funcional 
   - bonus +10: implementado com uso de método virtual
 
-- Implementação e uso do comando `save-concessionaria` e `load-concessionaria` | **... / 30**
+- Implementação e uso do comando `save-concessionaria` e `load-concessionaria` | **30 / 30**
   - 0: não implementado
   - 15: ambos os comandos implementados e funcionais
   
-- Implementação eficiente através do uso de referencias e contêineres da STL | **5 / 10**
+- Implementação eficiente através do uso de referencias e contêineres da STL | **10 / 10**
   - 0: não usou contêiner da STL nem fez uso eficiente dos recursos computacionais
   - 5: usou contêiner da STL mas não otimizou uso dos recursos computacionais
   - 10: usou contêiner da STL junto a algoritmos e práticas de bom uso de recursos computacionais
@@ -126,17 +139,17 @@ Junto aos arquivos há um arquivo de entrada onde encontra-se algumas possiveis 
   - 0: não organizou o código
   - 5: organizou o código 
   
-- Documentação do código | **... / 5**
+- Documentação do código | **5 / 5**
   - 0: não documentou o código
   - 5: documentou o código 
   
-- Implementação e documentação de arquivos e procedimentos de compilação e teste | **5 / 15**
+- Implementação e documentação de arquivos e procedimentos de compilação e teste | **15 / 15**
   - 0: não implementou arquivos e procedimentos de compilação e teste
   - 5: implementou alguns arquivos e procedimentos de compilação e teste (com alguma documentação) 
   - 15: Ampla implementação e documentação de arquivos e procedimentos de compilação e teste (com exemplos)
  
  # Total
  
- **100 / 150 ** pontos (sem bônus)
+ **150 / 150 ** pontos (sem bônus)
  
  **... / 200 ** pontos (com bônus)

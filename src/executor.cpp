@@ -1,5 +1,4 @@
 #include "../include/executor.h"
-#include "../include/sistema.h"
 
 using namespace std;
 
@@ -81,13 +80,13 @@ string Executor::processarLinha(string linha)
     else if (nomeComando == "save-concessionaria")
     {
       string nomeConcessionaria = restoDe(buf);
-      //implementar a criação de arquivo de determinada concessionaria
+      return sistema->save_concessionaria(nomeConcessionaria);
     }
 
     else if (nomeComando == "load-concessionaria")
     {
       string nomeConcessionaria = restoDe(buf);
-      //implementar recuperação de arquivo de determinada concessionaria
+      return sistema->load_concessionaria(nomeConcessionaria);
     }
 
     else if (nomeComando == "list-concessionaria")

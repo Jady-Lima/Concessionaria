@@ -12,11 +12,14 @@ class Moto : public Veiculo
         string modelo;
         
     public:
+        //CONSTRUTOR
         Moto(string model, string chassi, string marca, double preco, int ano_fabricacao);
 
+        //ACESSO E EDIÇÃO DO MODELO DA MOTO
         string getModelo();
         void setModelo(string m);
 
+        //IMPRIME OS DADOS DA MOTO
         void print_Moto();
 };
 

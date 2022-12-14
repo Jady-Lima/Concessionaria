@@ -1,11 +1,6 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 #include "sistema.h"
-#include <istream>
-#include <ostream>
-#include <sstream>
-#include <iostream>
-#include <queue>
 
 using namespace std;
 

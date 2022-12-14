@@ -1,0 +1,4 @@
+cons:IMD-SE 11.111.111/0001-11 3
+car:IMD-SE toyota 9 100000 2001 gasolina
+car:IMD-SE renault 7 570000 2018 eletrico
+bike:IMD-SE honda 4 12000 2008 esportiva

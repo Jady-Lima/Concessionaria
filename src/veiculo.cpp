@@ -9,49 +9,57 @@ Veiculo::Veiculo()
     setAno_Fabricacao(0);
 }
 
-//RETORNA O CHASSI DO VEICULO
+//FUNÇÃO DE ACESSO AO CHASSI
+//Retorna: chassi do veiculo
 string Veiculo::getChassi()
 {
     return chassi;
 }
 
-//EDITA O CHASSI DO VEICULO
+//FUNÇÃO DE EDIÇÃO DO CHASSI
+//Edita o chassi do veiculo
 void Veiculo::setChassi(string c)
 {
     chassi = c;
 }
 
-//RETORNA A MARCA DO VEICULO
+//FUNÇÃO DE ACESSO A MARCA
+//Retorna a marca do veiculo
 string Veiculo::getMarca()
 {
     return marca;
 }
 
-//EDITA A MARCA DO VEICULO
+//FUNÇÃO DE EDIÇÃO DA MARCA
+//Edita a marca do veiculo
 void Veiculo::setMarca(string m)
 {
     marca = m;
 }
 
-//RETORNA O PRECO DO VEICULO
+//FUNÇÃO DE ACESSO AO PREÇO
+//Retorna: o preço do veiculo
 double Veiculo::getPreco()
 {
     return preco;
 }
 
-//EDITA O PRECO DO VEICULO
+//FUNÇÃO DE EDIÇÃO DO PREÇO
+//Edita o Preço do veiculo
 void Veiculo::setPreco(double p)
 {
     preco = p;
 }
 
-//RETORNA O ANO DE FABRICACAO DO VEICULO
+//FUNÇÃO DE ACESSO AO ANO DE FABRICAÇÃO
+//Retorna: ano de fabricação do veiculo
 int Veiculo::getAno_Fabricacao()
 {
     return ano_fabricacao;
 }
 
-//EDITA O ANO DE FABRICACAO DO VEICULO
+//FUNÇÃO DE EDIÇÃO DO ANO DE FABRICAÇÃO
+//Edita o ano de fabricação
 void Veiculo::setAno_Fabricacao(int a)
 {
     ano_fabricacao = a;

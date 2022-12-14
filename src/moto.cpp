@@ -1,6 +1,7 @@
 #include "../include/moto.h"
 
 //CONSTRUTOR
+//Recebe: dados da nova moto
 Moto::Moto(string model, string chassi, string marca, double preco, int ano_fabricacao)
 {
     setModelo(model);
@@ -11,13 +12,15 @@ Moto::Moto(string model, string chassi, string marca, double preco, int ano_fabr
     //print_Moto();
 }
 
-//RETORNA O TIPO DE MODELO
+//FUNÇÃO DE ACESSO AO MODELO DA MOTO
+//Retorna: Modelo da moto
 string Moto::getModelo()
 {
     return modelo;
 }
 
-//EDITA O TIPO DE MODELO
+//FUNÇÃO DE EDIÇÃO AO MODELO DA MOTO
+//Edita o modelo da moto
 void Moto::setModelo(string m)
 {
     modelo = m;

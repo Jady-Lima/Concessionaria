@@ -1,6 +1,7 @@
 #include "../include/automoveis.h"
 
 //CONSTRUTOR
+//Recebe: dados do novo automovel
 Automoveis::Automoveis(string t_m, string chassi, string marca, double preco, int ano_fabricacao)
 {
     setTipo_motor(t_m);
@@ -8,16 +9,17 @@ Automoveis::Automoveis(string t_m, string chassi, string marca, double preco, in
     setPreco(preco);
     setChassi(chassi);
     setAno_Fabricacao(ano_fabricacao);
-    //print_carro();
 }
 
-//RETORNA O TIPO DE MOTOR
+//FUNÇÃO DE ACESSO AO TIPO DE MOTOR
+//Retorna: tipo de motor
 string Automoveis::getTipo_motor()
 {
     return tipo_de_motor;
 }
 
-//EDITA O TIPO DE MOTOR
+//FUNÇÃO DE EDIÇÃO DO TIPO DE MOTOR
+//Edita o tipo de motor
 void Automoveis::setTipo_motor(string t)
 {
     tipo_de_motor = t;

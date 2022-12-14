@@ -11,13 +11,15 @@ Caminhao::Caminhao(string tipo_carga, string chassi, string marca, double preco,
     //print_caminhao();
 }
 
-//RETORNA O TIPO DE CARGA
+//FUNÇÃO DE ACESSO AO TIPO DE CARGA
+//Retorna: tipo de carga do caminhão
 string Caminhao::getTipo_Carga()
 {
     return tipo_de_carga;
 }
 
-//EDITA O TIPO DE CARGA
+//FUNÇÃO DE EDIÇÃO DO TIPO DE CARGA
+//Edita o tipo de carga
 void Caminhao::setTipo_Carga(string t)
 {
     tipo_de_carga = t;
